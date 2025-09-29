@@ -7,9 +7,9 @@
 
 void add_item(Item *item_list, double price, char *sku, char *category, char *name, int index){
 
-	item_list[index].sku = (char *) malloc(sizeof(char)*(strlen(sku)+1);
-	item_list[index].category = (char *) malloc(sizeof(char)*(strlen(category)+1);
-	item_list[index].name = (char *) malloc(sizeof(char)*(strlen(name)+1);
+	item_list[index].sku = (char *) malloc(sizeof(char)*(strlen(sku)+1));
+	item_list[index].category = (char *) malloc(sizeof(char)*(strlen(category)+1));
+	item_list[index].name = (char *) malloc(sizeof(char)*(strlen(name)+1));
 
 	item_list[index].price = price;
 	strcpy(item_list[index].sku, sku);
@@ -48,7 +48,7 @@ void print_items(Item *item_list, int size){
 
 	for (int i = 0; i < size; i++){
 		printf("----------Item %d----------\n", i); 
-		printf("Name: %s\nCategory: %s\nSku: %s\n Price: %f\n", item_list[i].name, item_list[i].category, item_list[i].sku, item_list[i].price);
+		printf("Name: %s\nCategory: %s\nSku: %s\nPrice: %f\n", item_list[i].name, item_list[i].category, item_list[i].sku, item_list[i].price);
 	
 	}
 
