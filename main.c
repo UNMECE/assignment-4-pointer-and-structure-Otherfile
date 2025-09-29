@@ -67,7 +67,7 @@ int main(){
 	add_item(item_list, 8.99, "500500500", "Office Supplies", "Stapler", 4);
 
 	print_items(item_list, 5);
-	average_prie(item_list, 5);
+	average_price(item_list, 5);
 	
 	return 0;
 }
