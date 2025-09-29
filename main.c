@@ -24,9 +24,9 @@ void free_items(Item *item_list, int size){
 	for (int i = 0; i < size; i++){
 
 
-	free(item_list[i].sku);
-	free(item_list[i].category);
-	free(item_list[i].name);
+		free(item_list[i].sku);
+		free(item_list[i].category);
+		free(item_list[i].name);
 	}
 
 	free(item_list);
@@ -55,8 +55,7 @@ void print_items(Item *item_list, int size){
 }
 
 
-int main(){
-
+int main(int argc, char* argv[]){
 
 	Item* item_list = (Item *) malloc(sizeof(Item) * 5);
 
@@ -65,11 +64,30 @@ int main(){
 	add_item(item_list, 12.99, "300300300", "Beverage", "Cola", 2);
 	add_item(item_list, 19.99, "400400400", "Electronics", "Hard Drive", 3);
 	add_item(item_list, 8.99, "500500500", "Office Supplies", "Stapler", 4);
-
-	print_items(item_list, 5);
-	average_price(item_list, 5);
 	
+	if (argc == 1) {
+		print_items(item_list, 5);
+		double avg = average_price(item_list, 5);
+		printf("\nAverage of all values: %f\n", avg);
+		free_items(item_list, 5);
+		return 0;
+	}
+
+	char* sku = argv[1];
+	int i = 0;
+
+	while (i < 5 && strcmp(item_list[i].sku, sku) != 0) {
+		i++;
+	}
+
+	if (i < 5) {
+		printf("Name: %s\nCategory: %s\nSku: %s\nPrice: %f\n",
+			   item_list[i].name, item_list[i].category,
+		 item_list[i].sku, item_list[i].price);
+	} else {
+		printf("Item not found\n");
+	}
+
+	free_items(item_list, 5);
 	return 0;
 }
-
-
